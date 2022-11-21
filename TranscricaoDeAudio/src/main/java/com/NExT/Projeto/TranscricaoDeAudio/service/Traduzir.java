@@ -38,4 +38,5 @@ public class Traduzir  {
         System.out.println(translation.getTranslatedText());
         
         sc.close();
+    }
 }
