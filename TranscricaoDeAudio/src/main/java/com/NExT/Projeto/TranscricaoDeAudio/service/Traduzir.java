@@ -7,8 +7,9 @@ import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 import com.google.cloud.translate.Translate.TranslateOption;
 
-public class Traduzir {
-    public static void main(String[] args) {
+public class Traduzir  {
+    
+    public void PtToEn() {
         Scanner sc = new Scanner(System.in);
         Translate translate = TranslateOptions.getDefaultInstance().getService();
         
