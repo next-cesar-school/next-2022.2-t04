@@ -22,6 +22,20 @@ public class Traduzir  {
         System.out.println(translation.getTranslatedText());
         
         sc.close();
+        
     }
     
+    public void EnToPt() {
+        Scanner sc = new Scanner(System.in);
+        Translate translate = TranslateOptions.getDefaultInstance().getService();
+        
+        String texto = sc.nextLine();
+        Translation translation = 
+        translate.translate(texto, 
+        TranslateOption.sourceLanguage("en"),
+        TranslateOption.targetLanguage("pt"));
+
+        System.out.println(translation.getTranslatedText());
+        
+        sc.close();
 }
