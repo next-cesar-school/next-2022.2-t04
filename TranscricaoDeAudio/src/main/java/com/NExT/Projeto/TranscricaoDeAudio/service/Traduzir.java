@@ -88,4 +88,20 @@ public class Traduzir  {
         
         sc.close();
     }
+
+    public void DetectaToEs() {
+        Scanner sc = new Scanner(System.in);
+        Translate translate = TranslateOptions.getDefaultInstance().getService();
+        String texto = sc.nextLine();
+        Detection detection = translate.detect(texto);
+        String idiomaDetectado = detection.getLanguage();
+        Translation translation = 
+        translate.translate(texto, 
+        TranslateOption.sourceLanguage(idiomaDetectado),
+        TranslateOption.targetLanguage("es"));
+
+        System.out.println(translation.getTranslatedText());
+        
+        sc.close();
+    }
 }
