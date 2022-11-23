@@ -42,6 +42,12 @@ public class app {
             System.out.println("Digite o texto em qualquer idioma para traduzir em Espanhol: ");
             text.DetectaToEs();
             break;
+
+        case "DetectaIt":
+        
+            System.out.println("Digite o texto em qualquer idioma para traduzir em Italiano: ");
+            text.DetectaToIt();
+            break;
         }
 
         sc.close();
