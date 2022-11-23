@@ -1,28 +1,33 @@
 package com.NExT.Projeto.TranscricaoDeAudio;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+//import com.NExT.Projeto.TranscricaoDeAudio.service.Audiotranslate;
 import com.NExT.Projeto.TranscricaoDeAudio.service.Traduzir;
 
 public class app {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner (System.in);
         Traduzir text = new Traduzir();
-        System.out.println("Escolha o Idioma: PT = Português, EN = Inglês");
-        String choice = sc.next();
-
-        switch (choice) {
+        //Audiotranslate audio = new Audiotranslate();
+        System.out.println("Digite seu texto: ");
+        String phrase = sc.nextLine();
+        System.out.println("Para qual idioma você quer traduzir? ");
+        String target = sc.nextLine();
+        
+        text.Translation(phrase, target);
+        
+        /* switch (choice) {
         
         case "Pt":
-        
-            System.out.println("Digite o texto que você quer traduzir do Português para o Inglês: ");
-            text.PtToEn();
+
+            text.Translation(phrase, "Pt");
             break;
 
         case "En":
         
-            System.out.println("Digite o texto que você quer traduzir do Inglês para o Português: ");
-            text.EnToPt();
+            text.Translation(phrase, "En");
             break;
 
         case "DetectaPt":
@@ -48,8 +53,11 @@ public class app {
             System.out.println("Digite o texto em qualquer idioma para traduzir em Italiano: ");
             text.DetectaToIt();
             break;
-        }
 
-        sc.close();
+        case "Audio":
+            audio.audioToEnglish(); 
+        } */
+
+        sc.close(); 
     }
 }
