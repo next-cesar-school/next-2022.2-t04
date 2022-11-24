@@ -2,21 +2,27 @@ package com.NExT.Projeto.TranscricaoDeAudio;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
-//import com.NExT.Projeto.TranscricaoDeAudio.service.Audiotranslate;
+import com.NExT.Projeto.TranscricaoDeAudio.service.Audiotranslate;
 import com.NExT.Projeto.TranscricaoDeAudio.service.Traduzir;
 
 public class app {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         Scanner sc = new Scanner (System.in);
         Traduzir text = new Traduzir();
-        //Audiotranslate audio = new Audiotranslate();
-        System.out.println("Digite seu texto: ");
+        Audiotranslate audio = new Audiotranslate();
+        /*System.out.println("Digite seu texto: ");
         String phrase = sc.nextLine();
         System.out.println("Para qual idioma você quer traduzir? ");
-        String target = sc.nextLine();
+        String target = sc.nextLine();*/
         
-        text.Translation(phrase, target);
+        String funciona = audio.audioToEnglish();
+        System.out.println("Passei aqui!");
+        System.out.println(funciona);
+        System.out.println("Agora aqui!");
+
+        //text.Translation(phrase, target);
         
         /* switch (choice) {
         
