@@ -15,7 +15,6 @@ import com.google.cloud.speech.v1.RecognitionConfig;
 import com.google.cloud.speech.v1.SpeechClient;
 import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1.SpeechRecognitionResult;
-import com.google.cloud.speech.v1.RecognitionConfig.AudioEncoding;
 import com.google.protobuf.ByteString;
 
 
@@ -24,19 +23,19 @@ public class Audiotranslate {
     public String audioToEnglish() throws IOException, InterruptedException, ExecutionException {
         SpeechClient speechClient = SpeechClient.create();
 
-        Path path = Paths.get("C:/Users/Pichau/Desktop/next-2022.2-t04/TranscricaoDeAudio/src/main/java/com/NExT/Projeto/TranscricaoDeAudio/audio/audioteste.m4a");
+        Path path = Paths.get("C:/Users/Pichau/Desktop/next-2022.2-t04/TranscricaoDeAudio/src/main/java/com/NExT/Projeto/TranscricaoDeAudio/audio/audiotest.wav");
         byte[] data = Files.readAllBytes(path);
         ByteString audioBytes = ByteString.copyFrom(data);
         
-        RecognitionConfig config = RecognitionConfig.newBuilder().setEnableAutomaticPunctuation(true)
-                                    .setEncoding(AudioEncoding.LINEAR16)
-                                    .setSampleRateHertz(48000)
+        RecognitionConfig config = RecognitionConfig.newBuilder()
+                                    .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
                                     .setLanguageCode("pt-BR")
+                                    .setAudioChannelCount(2)
                                     .build();
 
         RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(audioBytes).build();
-        OperationFuture<LongRunningRecognizeResponse, LongRunningRecognizeMetadata> response =
-            speechClient.longRunningRecognizeAsync(config, audio);
+        OperationFuture<LongRunningRecognizeResponse, LongRunningRecognizeMetadata> 
+        response = speechClient.longRunningRecognizeAsync(config, audio);
         
         while (!response.isDone()) {
             System.out.println("Esperando responder");
