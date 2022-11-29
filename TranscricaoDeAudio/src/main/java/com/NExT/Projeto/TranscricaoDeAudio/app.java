@@ -10,21 +10,21 @@ import com.NExT.Projeto.TranscricaoDeAudio.service.Traduzir;
 public class app {
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         Scanner sc = new Scanner (System.in);
-        Traduzir text = new Traduzir();
+        //Traduzir text = new Traduzir();
         Audiotranslate audio = new Audiotranslate();
-        /*System.out.println("Digite seu texto: ");
-        String phrase = sc.nextLine();
-        System.out.println("Para qual idioma você quer traduzir? ");
-        String target = sc.nextLine();*/
+        //System.out.println("Digite seu texto: ");
+        //String phrase = sc.nextLine();
+        //System.out.println("Para qual idioma você quer traduzir? ");
+        //String target = sc.nextLine();
         
-        String funciona = audio.audioToEnglish();
+        //String funciona = audio.audioToEnglish();
         System.out.println("Passei aqui!");
-        System.out.println(funciona);
+        //System.out.println(funciona);
         System.out.println("Agora aqui!");
 
         //text.Translation(phrase, target);
         
-        /* switch (choice) {
+    /*    switch (choice) {
         
         case "Pt":
 
