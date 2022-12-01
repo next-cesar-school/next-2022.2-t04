@@ -23,8 +23,7 @@ public class Audiotranslate {
     public String audioToEnglish(String filename) throws IOException, InterruptedException, ExecutionException {
         SpeechClient speechClient = SpeechClient.create();        
         Path path = Paths.get("upload/audio/" + filename);
-        
-        //Path path = Paths.get("C:/Users/Pichau/Desktop/next-2022.2-t04/TranscricaoDeAudio/src/main/java/com/NExT/Projeto/TranscricaoDeAudio/audio/audiotest2.wav");
+                
         byte[] data = Files.readAllBytes(path);
         ByteString audioBytes = ByteString.copyFrom(data);
         
@@ -48,6 +47,7 @@ public class Audiotranslate {
         for (SpeechRecognitionResult result : results) {
             SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
             return alternative.getTranscript();
+            
         }
         return null;
     }
