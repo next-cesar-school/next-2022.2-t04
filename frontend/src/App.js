@@ -7,6 +7,7 @@ function App() {
   const [translatedText, setTranslatedText] = useState("")
   const [file, setFile] = useState(null)
   const [transcriptionText, setTranscriptionText] = useState("")
+  const [choiceIdioma, setChoiceIdioma] = useState(null)
 
   const handleOnChange = (e) => {
     setTranslationText(e.target.value)
@@ -14,6 +15,10 @@ function App() {
 
   const handleOnChangeFile = (e) => {
     setFile(e.target.files[0])
+  }
+
+  const handleOnChangeIdioma = (e) => {
+    setChoiceIdioma(e.target.value)
   }
 
   const handleOnSubmitFile = () => {
@@ -27,39 +32,49 @@ function App() {
     .then(result => {
       const data = JSON.parse(JSON.stringify(result.data))
       console.log(data)
-      console.log(data["traduction"])
-      console.log(data['"traduction"'])
-     setTranscriptionText(JSON.parse(JSON.stringify(result.data)).traduction) 
+      setTranscriptionText(JSON.parse(JSON.stringify(result.data)).traduction) 
    })
 }  
 
   const handleOnSubmit = () => {
        console.log(translationText)
-       axios.get(`http://localhost:8080/toenglish/${translationText}`,)
+       axios.get(`http://localhost:8080/idioma/${translationText}/${choiceIdioma}`,)
        .then(result => {
         console.log(result.data)
         setTranslatedText(result.data)
       })
   }
   return (
+    <div className="all">
     <div className="App">
       <header className="App-header">
-        <div className="mb-3">
-        <label  for="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-        <textarea value={translationText} onChange={handleOnChange} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <div className="boxText">
+        <div className="boxIdiomaTranslate">
+        <label  for="exampleFormControlTextarea1" className="form-label"> <font size="5"> Digite o texto </font></label>
+        <select onChange={handleOnChangeIdioma} className="form-select" aria-label="Default select example">
+          <option selected>Selecione o Idioma</option>
+          <option value="Pt">Português</option>
+          <option value="En">Inglês</option>
+          <option value="Fr">Francês</option>
+          <option value="Es">Espanhol</option>
+          <option value="It">Italiano</option>
+        </select>        
+        <textarea value={translationText} onChange={handleOnChange} className="form-control1" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <p className="boxResponse">{translatedText}</p>
+        <div className="buttonTraduzir"><button onClick={handleOnSubmit} type="button" className="btn btn-info">Traduzir</button></div></div>
         </div>
-
-        <button onClick={handleOnSubmit} type="button" className="btn btn-light">Traduzir</button>
-
-        <p>{translatedText}</p>
+        
         <div className="mb-3">
-          <label for="formFile" className="form-label">Default file input example</label>
+          <div className="boxUpload">
+          <label for="formFile" className="form-label"> <font size="5"> Upload .wav </font></label>
           <input onChange={handleOnChangeFile} className="form-control" type="file" id="formFile"/>
-          <button onClick={handleOnSubmitFile} type="button" className="btn btn-light">Transcrição</button>
-          <p>{transcriptionText}</p>
+          <p className="boxResponse">{transcriptionText}</p>
+          <button onClick={handleOnSubmitFile} type="button" className="btn btn-info">Transcrição</button>
+          </div>
         </div>
 
       </header>
+    </div>
     </div>
   );
 }
