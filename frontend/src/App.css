@@ -1,18 +1,13 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* anterior 
+    #282c34
+    (0, 162, 255)
+    atual
+    #6703b9
+    (255, 250, 3) 
+    */
 .App-header {
   background-color: #282c34;
   border: solid 1px rgb(0, 162, 255);
@@ -54,6 +49,7 @@
 .boxResponse{
   background-color: white;
   width: 100%;
+  min-height: 1.7rem;
   border-radius: 0.3rem;
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
@@ -66,19 +62,8 @@
 }
 .all {
   background-color: black;
-  border: 2px solid red;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

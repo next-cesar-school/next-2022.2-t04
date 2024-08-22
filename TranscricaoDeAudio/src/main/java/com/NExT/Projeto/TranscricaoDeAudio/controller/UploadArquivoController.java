@@ -32,10 +32,7 @@ public class UploadArquivoController {
     private final String pathArquivos = "upload/audio/";
     Audiotranslate audioTranscricao = new Audiotranslate();
     Traduzir tradutor = new Traduzir();
-    /*public UploadArquivoController(@Value("${app.path.arquivos}") String pathArquivos){
-       this.pathArquivos = pathArquivos;
-    }*/
-
+    
     @PostMapping("/{target}")
     public ResponseEntity<String> salvarArquivo(@RequestParam("file") MultipartFile file, @PathVariable String target) throws IOException, InterruptedException, ExecutionException {
         log.info("Recebendo o arquivo: ", file.getOriginalFilename());

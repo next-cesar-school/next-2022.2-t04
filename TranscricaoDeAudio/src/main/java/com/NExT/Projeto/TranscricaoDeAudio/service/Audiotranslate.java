@@ -21,18 +21,19 @@ import com.google.protobuf.ByteString;
 public class Audiotranslate {
     
     public String audioToEnglish(String filename) throws IOException, InterruptedException, ExecutionException {
+        AudioConvert audioConvert = new AudioConvert();
         SpeechClient speechClient = SpeechClient.create();        
         Path path = Paths.get("upload/audio/" + filename);
-                
+        audioConvert.convertAudio(path);                
         byte[] data = Files.readAllBytes(path);
         ByteString audioBytes = ByteString.copyFrom(data);
         
         RecognitionConfig config = RecognitionConfig.newBuilder()
                                     .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                                    .setLanguageCode("pt-BR")                                
+                                    .setLanguageCode("pt-BR")                                                              
                                     .setAudioChannelCount(2)
                                     .build();
-
+                                    
         RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(audioBytes).build();
         OperationFuture<LongRunningRecognizeResponse, LongRunningRecognizeMetadata> 
         response = speechClient.longRunningRecognizeAsync(config, audio);

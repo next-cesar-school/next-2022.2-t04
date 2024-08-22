@@ -1,0 +1,12 @@
+Email do outlook:
+t4projeto@outlook.com
+t4projeto@gmail.com
+projetonextt4123456
+
+
+só lembra de adicionar essa variavel de ambiente 
+com o path que encontre esse json
+
+set GOOGLE_APPLICATION_CREDENTIALS="C:\Program Files\Api\gcp-api-key.json"
+
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Program Files\Api\gcp-api-key.json"

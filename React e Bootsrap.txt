@@ -1,0 +1,12 @@
+netstat -ao |find /i "listening"
+Taskkill /F /IM 46480
+
+React
+npx create-react-app (my-app(Nome da pasta))
+
+
+
+
+npm install bootstrap -S (Colocar depency) 
+
+value={translationText} = valor inincal

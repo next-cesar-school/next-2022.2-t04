@@ -24,7 +24,7 @@ function App() {
   const handleOnSubmitFile = () => {
     const formData = new FormData();
     formData.append("file", file)
-    axios.post(`http://localhost:8080/upload/arquivo/en`, formData, {
+    axios.post(`http://localhost:8080/upload/arquivo/${choiceIdioma}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -59,7 +59,7 @@ function App() {
           <option value="Es">Espanhol</option>
           <option value="It">Italiano</option>
         </select>        
-        <textarea value={translationText} onChange={handleOnChange} className="form-control1" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea value={translationText} onChange={handleOnChange} className="form-control1 test" id="exampleFormControlTextarea1" rows="3"></textarea>
         <p className="boxResponse">{translatedText}</p>
         <div className="buttonTraduzir"><button onClick={handleOnSubmit} type="button" className="btn btn-info">Traduzir</button></div></div>
         </div>
@@ -72,7 +72,6 @@ function App() {
           <button onClick={handleOnSubmitFile} type="button" className="btn btn-info">Transcrição</button>
           </div>
         </div>
-
       </header>
     </div>
     </div>
